@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -12,7 +15,7 @@
   <!-- navegação -->
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">Home</a>
+      <a class="navbar-brand" href="../_home/index.php">Home</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
         aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -23,7 +26,7 @@
             <a class="nav-link active" aria-current="page" href="../products/index.php">produtos </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../users/index.php">usuarios </a>
+            <a class="nav-link" href="../_home/index.php">usuarios </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="../clifor/index.php">clientes e fornecedores</a>
@@ -42,7 +45,62 @@
     </div>
   </nav>
 
-  <h1>pagina de produtos</h1>
+  <?php
+  if (isset($_SESSION['msg'])) {
+    echo $_SESSION['msg'];
+    unset($_SESSION['msg']);
+  }
+  ?>
+
+
+  <div style="height:80vh; display: flex; flex-direction: row;">:
+    <form action="./register/index.php" method="post">
+      <div class="mb-3">
+        <label for="produto">Nome do produto</label>
+        <input name="description" type="text" class="form-control" id="produto" placeholder="nome do produto">
+      </div>
+      <div class="mb-3">
+        <label for="unidade">Unidade de medida</label>
+        <select name="unit" id="unidade">
+          <option value="UN">Un</option>
+          <option value="KG">Kg</option>
+        </select>
+        <button name="botaoCadastar" class="btn btn-primary" type="submit">Cadastrar</button>
+      </div>
+      <hr class="my-4">
+      <small class="text-body-secondary">By clicking Sign up, you agree to the terms of use.</small>
+    </form>
+  </div>
+  <!-- 
+    <ul>
+      <li>
+
+      </li>
+    </ul> -->
+
+  </div>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light" style="position: absolute;bottom: 0;">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="../products/index.php">Produtos</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
+        aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="../products/index.php">Cadastrar </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../_home/index.php">Atualizar </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../clifor/index.php">Listar</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
