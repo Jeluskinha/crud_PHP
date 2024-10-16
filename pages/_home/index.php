@@ -42,23 +42,6 @@
     </div>
   </nav>
 
-  <div class="container">
-    <div class="row">
-      <div class="col mt-5">
-        <?php
-        switch (@$_REQUEST['page']) {
-          case "produtos":
-            include('produtos.php');
-            break;
-          case "usuarios":
-            include('usuarios.php');
-          default:
-            print "<h1> Bem vindos! </h1>";
-        }
-        ?>
-      </div>
-    </div>
-  </div>
 
 
 
