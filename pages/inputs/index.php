@@ -42,25 +42,7 @@
     </div>
   </nav>
 
-  <div class="container">
-    <div class="row">
-      <div class="col mt-5">
-        <?php
-        switch (@$_REQUEST['page']) {
-          case "produtos":
-            include('produtos.php');
-            break;
-          case "usuarios":
-            include('usuarios.php');
-          default:
-            print "<h1> Bem vindos! </h1>";
-        }
-        ?>
-      </div>
-    </div>
-  </div>
-
-
+  <h1>pagina de entradas</h1>
 
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
