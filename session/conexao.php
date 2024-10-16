@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['botaoLogin'])) {
 
     if (isset($result_usuario) and $password == $result_usuario['password']) { //encontrando usuário e autenticando
       echo "autenticado.";
-      header("Location: ../home/index.php");
+      header("Location: ../pages/_home/index.php");
     } else {
       $_SESSION['msg'] = 'Login e senha incorretos';
       header("Location: ../index.php");
