@@ -74,6 +74,7 @@ include_once("../../venv.php");
       <small class="text-body-secondary">By clicking Sign up, you agree to the terms of use.</small>
     </form>
 
+
     <div>
       <?php
       $sql = "SELECT * FROM tb_products";
@@ -93,7 +94,6 @@ include_once("../../venv.php");
           echo "<td style='text-align: center'> " . $row['unit'] . "</td>";
           echo "<td>
                   <button onClick=\"location.href='update/index.php?id=$id'\" class='btn btn-success'>Editar</button>
-                  <button class='btn btn-danger'>Excluir</button>
                 </td>";
           echo "</tr>";
         }

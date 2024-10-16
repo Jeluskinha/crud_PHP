@@ -69,19 +69,20 @@ include_once("../../../venv.php");
     $produto = $stmt->fetch(PDO::FETCH_ASSOC);
 
     if ($produto) {
-      echo "ID: " . $produto['id'] . "<br>";
-      echo "Descrição: " . $produto['description'] . "<br>";
-      echo "Unidade: " . $produto['unit'] . "<br>";
-      echo "Status: " . $produto['status'] . "<br>";
-
+      //este código mostra uma cópia do produto que está sendo atualizado
+      // echo "ID: " . $produto['id'] . "<br>";
+      // echo "Descrição: " . $produto['description'] . "<br>";
+      // echo "Unidade: " . $produto['unit'] . "<br>";
+      // echo "Status: " . $produto['status'] . "<br>";
 
       echo '<div style="height:80vh; display: flex; flex-direction: row;justify-content: space-evenly;align-items: center;">';
       echo  '<form action="atualizar.php?id=' . $produto['id'] . '" method="post">';
 
-      echo    '<input type="hidden" name="acao"';
-      echo    '<input type="hidden" name="id" value=" ' . $produto['id'] . '"';
+      // estes inputs enviam o id de forma oculta para a página de atualizar
+      // echo    '<input type="hidden" name="acao"';
+      // echo    '<input type="hidden" name="id" value=" ' . $produto['id'] . '"';
 
-      echo    '<h1 style="margin-bottom: 50px">Editar Produto</h1>';
+      echo    '<h1 style="margin-bottom: 50px">Editar Produto</h2>';
       echo    '<div class="mb-3">';
       echo    '<label for="produto">Novo nome</la bel>';
       echo    '<input name="description" type="text" class="form-control" id="produto" placeholder=" ' . $produto['description'] . '">';
