@@ -12,7 +12,7 @@
   <!-- navegação -->
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">Teste</a>
+      <a class="navbar-brand" href="#">Home</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
         aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -20,19 +20,19 @@
       <div class="collapse navbar-collapse" id="navbarText">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">produtos </a>
+            <a class="nav-link active" aria-current="page" href="../products/index.php">produtos </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">usuarios </a>
+            <a class="nav-link" href="../users/index.php">usuarios </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">clientes e fornecedores</a>
+            <a class="nav-link" href="../clifor/index.php">clientes e fornecedores</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Entradas </a>
+            <a class="nav-link" href="../inputs/index.php">Entradas </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Saidas</a>
+            <a class="nav-link" href="../outputs/index.php">Saidas</a>
           </li>
         </ul>
         <span class="navbar-text">
@@ -42,25 +42,7 @@
     </div>
   </nav>
 
-  <div class="container">
-    <div class="row">
-      <div class="col mt-5">
-        <?php
-        switch (@$_REQUEST['page']) {
-          case "produtos":
-            include('produtos.php');
-            break;
-          case "usuarios":
-            include('usuarios.php');
-          default:
-            print "<h1> Bem vindos! </h1>";
-        }
-        ?>
-      </div>
-    </div>
-  </div>
-
-
+  <h1>pagina de entradas</h1>
 
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
