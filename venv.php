@@ -9,7 +9,7 @@ try {
   $conn = new PDO("mysql:host=$servidor;dbname=$dbname", $usuario, $senha);
   // Set the PDO error mode to exception
   $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-  echo "Conexão bem-sucedida <br>";
+  // echo "Conexão bem-sucedida <br>";
 } catch (PDOException $e) {
   echo "Conexão falhou: " . $e->getMessage();
 }
