@@ -91,7 +91,7 @@ include_once("../../venv.php");
           echo "<td>" . $row['description'] . "</td>";
           echo "<td style='text-align: center'> " . $row['unit'] . "</td>";
           echo "<td>
-                  <button class='btn btn-success'>Editar</button>
+                  <button onClick=\"location.href='update/index.php'\" class='btn btn-success'>Editar</button>
                   <button class='btn btn-danger'>Excluir</button>
                 </td>";
           echo "</tr>";
@@ -104,27 +104,10 @@ include_once("../../venv.php");
       ?>
     </div>
 
-    <form action="./register/index.php" method="post">
-      <div class="mb-3">
-        <label for="produto">Nome do produto</label>
-        <input name="description" type="text" class="form-control" id="produto" placeholder="nome do produto">
-      </div>
-      <div class="mb-3">
-        <label for="unidade">Unidade de medida</label>
-        <select name="unit" id="unidade">
-          <option value="UN">Un</option>
-          <option value="KG">Kg</option>
-        </select>
-        <button name="botaoCadastar" class="btn btn-primary" type="submit">Cadastrar</button>
-      </div>
-      <hr class="my-4">
-      <small class="text-body-secondary">By clicking Sign up, you agree to the terms of use.</small>
-    </form>
-
   </div>
 
 
-  <nav class="navbar navbar-expand-lg navbar-light bg-light" style="position: absolute;bottom: 0;">
+  <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light" style="position: absolute;bottom: 0;">
     <div class="container-fluid">
       <a class="navbar-brand" href="../products/index.php">Produtos</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
@@ -145,7 +128,7 @@ include_once("../../venv.php");
         </ul>
       </div>
     </div>
-  </nav>
+  </nav> -->
 
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
