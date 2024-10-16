@@ -86,12 +86,13 @@ include_once("../../venv.php");
         echo "<table class='table table-hover table-striped table-bordered'>";
         echo "<tr><th>#</th><th>Descrição</th><th>Unidade</th><th style='text-align: center'>Ações</th></tr>";
         foreach ($result as $row) {
+          $id = $row['id'];
           echo "<tr>";
           echo "<td>" . $row['id'] . "</td>";
           echo "<td>" . $row['description'] . "</td>";
           echo "<td style='text-align: center'> " . $row['unit'] . "</td>";
           echo "<td>
-                  <button onClick=\"location.href='update/index.php'\" class='btn btn-success'>Editar</button>
+                  <button onClick=\"location.href='update/index.php?id=$id'\" class='btn btn-success'>Editar</button>
                   <button class='btn btn-danger'>Excluir</button>
                 </td>";
           echo "</tr>";

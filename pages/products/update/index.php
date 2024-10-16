@@ -1,3 +1,6 @@
+<!-- AQUI ESTA O COMPONENTE COM O FORMULÁRIO COM OS DADOS PARA ATUALIZAR
+eu não consegui chamar uma função para atualizar sem mudar de página, então criei atualizar.php para interagir com o DB e voltar para a páina de PRODUTOS -->
+
 <?php
 session_start();
 include_once("../../../venv.php");
@@ -25,7 +28,7 @@ include_once("../../../venv.php");
       <div class="collapse navbar-collapse" id="navbarText">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="../products/index.php">produtos </a>
+            <a class="nav-link active" aria-current="page" href="../../products/index.php">produtos </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="../../users/index.php">usuarios </a>
@@ -54,30 +57,51 @@ include_once("../../../venv.php");
   }
   ?>
 
+  <?php
+  if (isset($_GET['id'])) {
+    $id = $_GET['id'];
 
-  <div style="height:80vh; display: flex; flex-direction: row;justify-content: space-evenly;align-items: center;">
+    $sql = "SELECT * FROM tb_products WHERE id = :id";
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(':id', $id);
+    $stmt->execute();
 
-    <form action="./register/index.php" method="post">
-      <h1 style="margin-bottom: 50px">Editar Produto</h1>
-      <div class="mb-3">
-        <label for="produto">Novo nome</label>
-        <input name="description" type="text" class="form-control" id="produto" placeholder="nome do produto">
-      </div>
-      <div class="mb-3">
-        <label for="unidade">Nova Unidade de medida</label>
-        <select name="unit" id="unidade">
-          <option value="UN">Un</option>
-          <option value="KG">Kg</option>
-        </select>
-        <button name="botaoCadastar" class="btn btn-primary" type="submit">Editar</button>
-      </div>
-      <hr class="my-4">
-      <small class="text-body-secondary">Ao clicar em Editar o seu produto será atualizado</small>
-    </form>
+    $produto = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    if ($produto) {
+      echo "ID: " . $produto['id'] . "<br>";
+      echo "Descrição: " . $produto['description'] . "<br>";
+      echo "Unidade: " . $produto['unit'] . "<br>";
+      echo "Status: " . $produto['status'] . "<br>";
 
 
-  </div>
+      echo '<div style="height:80vh; display: flex; flex-direction: row;justify-content: space-evenly;align-items: center;">';
+      echo  '<form action="atualizar.php?id=' . $produto['id'] . '" method="post">';
 
+      echo    '<input type="hidden" name="acao"';
+      echo    '<input type="hidden" name="id" value=" ' . $produto['id'] . '"';
+
+      echo    '<h1 style="margin-bottom: 50px">Editar Produto</h1>';
+      echo    '<div class="mb-3">';
+      echo    '<label for="produto">Novo nome</la bel>';
+      echo    '<input name="description" type="text" class="form-control" id="produto" placeholder=" ' . $produto['description'] . '">';
+      echo  '</div>';
+      echo  '<div class="mb-3">';
+      echo    '<label for="unidade">Nova Unidade de medida</label>';
+      echo    '<select name="unit" id="unidade">';
+      echo      '<option value="UN">Un</option>';
+      echo      '<option value="KG">Kg</option>';
+      echo  '</select>';
+      echo  '<button name="botaoAtualizar" class="btn btn-primary" type="submit">Editar</button>';
+      echo  '</div>';
+      echo  '<hr class="my-4">';
+      echo  '<small class="text-body-secondary">Ao clicar em Editar o seu produto será atualizado</small>';
+      echo  '</form>';
+      echo '</div>';
+    }
+  }
+
+  ?>
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
