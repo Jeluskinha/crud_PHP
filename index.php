@@ -10,6 +10,7 @@ session_start();
   <title>Projeto PHP</title>
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
+<!-- video para referencia https://www.youtube.com/watch?v=BSqtIw_hW8M&t=622s -->
 <!-- video para referencia https://www.youtube.com/watch?v=l9mN-TQnJAg&list=PLmY5AEiqDWwCyLprLXqBQ5gqVBZVxgGy0 -->
 
 <body>
@@ -29,7 +30,7 @@ session_start();
           type and scrambled it to make a type specimen book..</p>
       </div>
       <div class="col-md-10 mx-auto col-lg-5">
-        <form action="conexao.php" method="post" class="p-4 p-md-5 border rounded-3 bg-body-tertiary">
+        <form action="./session/conexao.php" method="post" class="p-4 p-md-5 border rounded-3 bg-body-tertiary">
           <div class="form-floating mb-3">
             <input name="email" type="text" class="form-control" id="floatingInput" placeholder="name@example.com">
             <label for="floatingInput">Email address</label>

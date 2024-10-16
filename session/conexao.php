@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-include_once("venv.php"); // Variaveis de ambiente e conexão com o db
+include_once("../venv.php"); // Variaveis de ambiente e conexão com o db
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['botaoLogin'])) {
   $botaoLogin = htmlspecialchars($_POST['botaoLogin'], ENT_QUOTES, 'UTF-8');
@@ -23,20 +23,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['botaoLogin'])) {
 
     if (isset($result_usuario) and $password == $result_usuario['password']) { //encontrando usuário e autenticando
       echo "autenticado.";
-      header("Location: ./home/index.php");
+      header("Location: ../home/index.php");
     } else {
       $_SESSION['msg'] = 'Login e senha incorretos';
-      header("Location: index.php");
+      header("Location: ../index.php");
       exit;
     }
   } else { // da erro se não informar login ou senha
     $_SESSION['msg'] = 'Informe Login e Senha';
-    header("Location: index.php");
+    header("Location: ../index.php");
     exit;
   };
 } else {
   // Redirecionar ou exibir uma mensagem de erro
   $_SESSION['msg'] = 'Página não encontrada';
-  header("Location: index.php");
+  header("Location: ../index.php");
   exit;
 }
