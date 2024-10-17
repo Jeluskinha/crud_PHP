@@ -100,7 +100,6 @@ include_once("../../../venv.php");
       echo '<hr class="my-4">';
       echo '</form>';
       echo '</div>';
-      echo '<small class="text-body-secondary">By clicking Sign up, you agree to the terms of use.</small>';
     }
   }
 
