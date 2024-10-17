@@ -7,11 +7,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['botaoCadastar'])) {
   $botaoLogin = htmlspecialchars($_POST['botaoCadastar'], ENT_QUOTES, 'UTF-8');
 
   $name = $_POST['name'];
-  $email = $_POST['email'];
+  $user = $_POST['usuario'];
   $password = $_POST['password'];
   $status = 1;
 
-  if (!empty($name) &&  !empty($email) &&  !empty($password)) {
+  if (!empty($name) &&  !empty($user) &&  !empty($password)) {
 
     try {
       $sql = "INSERT INTO tb_users (name, user, password, status) VALUES (:name, :user, :password, :status)";
@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['botaoCadastar'])) {
       $stmt = $conn->prepare($sql);
 
       $stmt->bindParam(':name', $name);
-      $stmt->bindParam(':user', $email);
+      $stmt->bindParam(':user', $user);
       $stmt->bindParam(':password', $password);
       $stmt->bindParam(':status', $status);
       $stmt->execute();

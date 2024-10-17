@@ -18,7 +18,7 @@ if (isset($_GET['id'])) {
   $produto = $stmt->fetch(PDO::FETCH_ASSOC);
 
   $_SESSION['msg'] = 'Produto atualizado';
-  $botaoLogin = htmlspecialchars($_POST['botaoAtualizar'], ENT_QUOTES, 'UTF-8');
+  $botaoAtualizar = htmlspecialchars($_POST['botaoAtualizar'], ENT_QUOTES, 'UTF-8');
 
   $description = $_POST['description'] ?: $produto['description'];
   $unit = $_POST['unit'];
