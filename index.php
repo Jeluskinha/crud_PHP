@@ -44,7 +44,8 @@ session_start();
               <input type="checkbox" value="remember-me"> Remember me
             </label>
           </div>
-          <button name="botaoLogin" class="w-100 btn btn-lg btn-primary" type="submit">Sign up</button>
+          <button onClick="salvarDados()" name="botaoLogin" class="w-100 btn btn-lg btn-primary" type="submit">Sign
+            up</button>
           <hr class="my-4">
           <small class="text-body-secondary">By clicking Sign up, you agree to the terms of use.</small>
         </form>
