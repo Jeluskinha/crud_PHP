@@ -62,14 +62,30 @@ include_once("../../venv.php");
       <h1 style="margin-bottom: 50px; text-align: center">Registrar entrada</h1>
       <div style="display: flex;justify-content: start;gap: 1rem;" class="mb-3">
         <label for="unidade">Cliente / fornecedor</label>
-        <select name="unit" id="unidade">
-          <option value="CMI">Cliente Mercado Interno</option>
-          <option value="VMI">Vendedor Mercado Interno</option>
+        <select name="id_clifor" id="unidade">
+          <!-- AQUI ESTOU PEGANDO O ID E O NOME DA LISTA DE CLIENTE / FORNECEDOR PARA USAR COMO OPTION -->
+          <?php
+          $sql = "SELECT * FROM tb_clifor";
+          $stmt = $conn->prepare($sql);
+          $stmt->execute();
+
+          $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+          if ($result) {
+            foreach ($result as $row) {
+              echo '<option value="' . $row['id'] . '">' . $row['name'] . '</option>';
+            }
+          } else {
+            $_SESSION['msg'] = "Nenhum produto cadastrado";
+            exit;
+          }
+          ?>
         </select>
       </div>
       <div style="display: flex;justify-content: space-evenly; gap: 1rem;" class="mb-3">
         <label for="unidade">Produto</label>
-        <select name="unit" id="unidade">
+        <select name="id_product" id="unidade">
+          <!-- AQUI ESTOU PEGANDO O ID E O NOME DA PRODUTO PARA USAR COMO OPTION -->
           <?php
           $sql = "SELECT * FROM tb_products";
           $stmt = $conn->prepare($sql);
@@ -79,7 +95,7 @@ include_once("../../venv.php");
 
           if ($result) {
             foreach ($result as $row) {
-              echo '<option value="' . $row['description'] . '">' . $row['description'] . '</option>';
+              echo '<option value="' . $row['id'] . '">' . $row['description'] . '</option>';
             }
           } else {
             $_SESSION['msg'] = "Nenhum produto cadastrado";
@@ -89,8 +105,8 @@ include_once("../../venv.php");
         </select>
       </div>
       <div style="display: flex;justify-content: start;gap: 1rem;" class="mb-3">
-        <label for="nome">Quantidade</label>
-        <input name="name" type="number" class="form-control" id="nome">
+        <label for="quantidade">Quantidade</label>
+        <input name="amount" type="number" class="form-control" id="quantidade">
       </div>
       <button style="align-self: center;" name="botaoCadastar" class="btn btn-primary" type="submit">Cadastrar</button>
       <hr class="my-4">
