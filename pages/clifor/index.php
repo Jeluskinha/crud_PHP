@@ -58,27 +58,19 @@ include_once("../../venv.php");
   <div style="height:80vh; display: flex; flex-direction: row;justify-content: space-evenly;align-items: center;">
 
     <form action="./register/index.php" method="post">
-      <h1 style="margin-bottom: 50px">Cadastro de Clientes</h1>
+      <h1 style="margin-bottom: 50px">Cadastrar cliente / fornecedor</h1>
       <div class="mb-3">
         <label for="nome">Nome</label>
         <input name="name" type="text" class="form-control" id="nome" placeholder="Nome">
-      </div>
-      <div class="mb-3">
-        <label for="usuario">Usuario</label>
-        <input name="usuario" type="text" class="form-control" id="usuario" placeholder="nome.sobrenome">
-      </div>
-      <div class="mb-3">
-        <label for="senha">Senha</label>
-        <input name="password" type="password" class="form-control" id="senha">
       </div>
       <button name="botaoCadastar" class="btn btn-primary" type="submit">Cadastrar</button>
       <hr class="my-4">
     </form>
 
 
-    <div>
+    <!-- <div>
       <?php
-      $sql = "SELECT * FROM tb_users";
+      $sql = "SELECT * FROM tb_clifor";
       $stmt = $conn->prepare($sql);
       $stmt->execute();
 
@@ -86,13 +78,12 @@ include_once("../../venv.php");
 
       if ($result) {
         echo "<table class='table table-hover table-striped table-bordered'>";
-        echo "<tr><th>#</th><th>Nome</th><th>Usuário</th><th>Criado em</th><th style='text-align: center'>Ações</th></tr>";
+        echo "<tr><th>#</th><th>Nome</th><th>Criado em</th><th style='text-align: center'>Ações</th></tr>";
         foreach ($result as $row) {
           $id = $row['id'];
           echo "<tr>";
           echo "<td>" . $row['id'] . "</td>";
           echo "<td>" . $row['name'] . "</td>";
-          echo "<td>" . $row['user'] . "</td>";
           echo "<td>" . $row['create_at'] . "</td>";
           echo "<td>
               <button onClick=\"location.href='update/index.php?id=$id'\" class='btn btn-success'>Editar</button>
@@ -105,7 +96,7 @@ include_once("../../venv.php");
         exit;
       }
       ?>
-    </div>
+    </div> -->
 
   </div>
 
