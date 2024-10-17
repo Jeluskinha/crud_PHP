@@ -10,25 +10,28 @@ include_once("../../../venv.php");
 if (isset($_GET['id'])) {
   $id = $_GET['id'];
 
-  $sql = "SELECT * FROM tb_products WHERE id = :id";
+  $sql = "SELECT * FROM tb_users WHERE id = :id";
   $stmt = $conn->prepare($sql);
   $stmt->bindParam(':id', $id);
   $stmt->execute();
 
-  $produto = $stmt->fetch(PDO::FETCH_ASSOC);
+  $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
 
-  $_SESSION['msg'] = 'Produto atualizado';
+  $_SESSION['msg'] = 'Usuario atualizado';
   $botaoAtualizar = htmlspecialchars($_POST['botaoAtualizar'], ENT_QUOTES, 'UTF-8');
 
-  $description = $_POST['description'] ?: $produto['description'];
-  $unit = $_POST['unit'];
-  $status = $produto['status'];
+  $name = $_POST['name'] ?: $usuario['name'];
+  $user = $_POST['user'] ?: $usuario['user'];
+  $password = $_POST['password'] ?: $usuario['password'];
 
-  $sql = "UPDATE tb_products SET description = :description, unit = :unit WHERE id = :id";
+  $sql = "UPDATE tb_users SET name = :name, user = :user, password = :password WHERE id = :id";
+
   $stmt = $conn->prepare($sql);
+
   $stmt->bindParam(':id', $id);
-  $stmt->bindParam(':description', $description);
-  $stmt->bindParam(':unit', $unit);
+  $stmt->bindParam(':name', $name);
+  $stmt->bindParam(':user', $user);
+  $stmt->bindParam(':password', $password);
 
   if ($stmt->execute()) {
     $_SESSION['msg'] = 'Produto atualizado';
