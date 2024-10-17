@@ -57,8 +57,8 @@ include_once("../../venv.php");
 
   <div style="height:80vh; display: flex; flex-direction: row;justify-content: space-evenly;align-items: center;">
 
-    <form action="./register/index.php" method="post">
-      <h1 style="margin-bottom: 50px">Cadastrar cliente / fornecedor</h1>
+    <form action="./register/index.php" method="post" style="width: 20%">
+      <h1 style="margin-bottom: 50px; text-align: center">Cadastrar cliente ou fornecedor</h1>
       <div class="mb-3">
         <label for="nome">Nome</label>
         <input name="name" type="text" class="form-control" id="nome" placeholder="Nome">
@@ -68,35 +68,33 @@ include_once("../../venv.php");
     </form>
 
 
-    <!-- <div>
-      <?php
-      $sql = "SELECT * FROM tb_clifor";
-      $stmt = $conn->prepare($sql);
-      $stmt->execute();
+    <?php
+    $sql = "SELECT * FROM tb_clifor";
+    $stmt = $conn->prepare($sql);
+    $stmt->execute();
 
-      $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-      if ($result) {
-        echo "<table class='table table-hover table-striped table-bordered'>";
-        echo "<tr><th>#</th><th>Nome</th><th>Criado em</th><th style='text-align: center'>Ações</th></tr>";
-        foreach ($result as $row) {
-          $id = $row['id'];
-          echo "<tr>";
-          echo "<td>" . $row['id'] . "</td>";
-          echo "<td>" . $row['name'] . "</td>";
-          echo "<td>" . $row['create_at'] . "</td>";
-          echo "<td>
+    if ($result) {
+      echo '<table class="table table-hover table-striped table-bordered" style="width: 40%">';
+      echo "<tr><th>#</th><th>Nome</th><th>Criado em</th><th style='text-align: center'>Ações</th></tr>";
+      foreach ($result as $row) {
+        $id = $row['id'];
+        echo "<tr>";
+        echo "<td>" . $row['id'] . "</td>";
+        echo "<td>" . $row['name'] . "</td>";
+        echo "<td>" . $row['create_at'] . "</td>";
+        echo "<td>
               <button onClick=\"location.href='update/index.php?id=$id'\" class='btn btn-success'>Editar</button>
             </td>";
-          echo "</tr>";
-        }
-        echo "</table>";
-      } else {
-        $_SESSION['msg'] = "Nenhum produto cadastrado";
-        exit;
+        echo "</tr>";
       }
-      ?>
-    </div> -->
+      echo "</table>";
+    } else {
+      $_SESSION['msg'] = "Nenhum produto cadastrado";
+      exit;
+    }
+    ?>
 
   </div>
 
