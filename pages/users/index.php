@@ -61,15 +61,15 @@ include_once("../../venv.php");
       <h1 style="margin-bottom: 50px">Cadastro de usuário</h1>
       <div class="mb-3">
         <label for="nome">Nome</label>
-        <input name="description" type="text" class="form-control" id="nome" placeholder="nome do nome">
+        <input name="name" type="text" class="form-control" id="nome" placeholder="Nome">
       </div>
       <div class="mb-3">
         <label for="email">Email</label>
-        <input name="description" type="email" class="form-control" id="email" placeholder="email@exemplo.com">
+        <input name="email" type="email" class="form-control" id="email" placeholder="email@exemplo.com">
       </div>
       <div class="mb-3">
-        <label for="password">Senha</label>
-        <input name="description" type="password" class="form-control" id="password">
+        <label for="senha">Senha</label>
+        <input name="password" type="password" class="form-control" id="senha">
       </div>
       <button name="botaoCadastar" class="btn btn-primary" type="submit">Cadastrar</button>
       <hr class="my-4">
@@ -108,8 +108,6 @@ include_once("../../venv.php");
     </div> -->
 
   </div>
-
-
 
   <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light" style="position: absolute;bottom: 0;">
     <div class="container-fluid">
