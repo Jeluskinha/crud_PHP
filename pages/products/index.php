@@ -58,6 +58,7 @@ include_once("../../venv.php");
   <div style="height:80vh; display: flex; flex-direction: row;justify-content: space-evenly;align-items: center;">
 
     <form action="./register/index.php" method="post">
+      <h1 style="margin-bottom: 50px">Cadastre seu produto</h1>
       <div class="mb-3">
         <label for="produto">Nome do produto</label>
         <input name="description" type="text" class="form-control" id="produto" placeholder="nome do produto">
