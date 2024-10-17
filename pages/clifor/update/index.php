@@ -1,5 +1,5 @@
 <!-- AQUI ESTA O COMPONENTE COM O FORMULÁRIO COM OS DADOS PARA ATUALIZAR
-eu não consegui chamar uma função para atualizar sem mudar de página, então criei atualizar.php para interagir com o DB e voltar para a páina de USUARIOS -->
+eu não consegui chamar uma função para atualizar sem mudar de página, então criei atualizar.php para interagir com o DB e voltar para a páina de PRODUTOS -->
 
 <?php
 session_start();
@@ -61,46 +61,38 @@ include_once("../../../venv.php");
   if (isset($_GET['id'])) {
     $id = $_GET['id'];
 
-    $sql = "SELECT * FROM tb_users WHERE id = :id";
+    $sql = "SELECT * FROM tb_clifor WHERE id = :id";
     $stmt = $conn->prepare($sql);
     $stmt->bindParam(':id', $id);
     $stmt->execute();
 
-    $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
+    $clifor = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    if ($usuario) {
-      //este código mostra uma cópia do produto que está sendo atualizado
-      // echo "ID: " . $produto['id'] . "<br>";
-      // echo "Descrição: " . $produto['name'] . "<br>";
-      // echo "Unidade: " . $produto['user'] . "<br>";
-      // echo "Status: " . $produto['password'] . "<br>";
-      // echo "Status: " . $produto['create_at'] . "<br>";
-      // echo "Status: " . $produto['status'] . "<br>";
+    if ($clifor) {
+      // este código mostra uma cópia do clifor que está sendo atualizado
+      // echo "ID: " . $clifor['id'] . "<br>";
+      // echo "Descrição: " . $clifor['name'] . "<br>";
+      // echo "Unidade: " . $clifor['status'] . "<br>";
+      // echo "Status: " . $clifor['create_at'] . "<br>";
 
       echo '<div style="height:80vh; display: flex; flex-direction: row;justify-content: space-evenly;align-items: center;">';
-      echo  '<form action="atualizar.php?id=' . $usuario['id'] . '" method="post">';
+      echo  '<form style="width: 20%" action="atualizar.php?id=' . $clifor['id'] . '" method="post">';
 
       // estes inputs enviam o id de forma oculta para a página de atualizar
       // echo    '<input type="hidden" name="acao"';
-      // echo    '<input type="hidden" name="id" value=" ' . $produto['id'] . '"';
+      // echo    '<input type="hidden" name="id" value=" ' . $clifor['id'] . '"';
 
-
-      echo '<h1 style="margin-bottom: 50px">Cadastro de usuário</h1>';
-      echo '<div class="mb-3">';
-      echo '<label for="nome">Nome</label>';
-      echo '<input name="name" type="text" class="form-control" id="nome" placeholder=" ' . $usuario['name'] . '">';
-      echo '</div>';
-      echo '<div class="mb-3">';
-      echo '<label for="usuario">Usuário</label>';
-      echo '<input name="user" type="text" class="form-control" id="usuario" placeholder=" ' . $usuario['user'] . '">';
-      echo '</div>';
-      echo '<div class="mb-3">';
-      echo '<label for="senha">Nova Senha</label>';
-      echo '<input name="password" type="text" class="form-control" id="senha">';
-      echo '</div>';
-      echo '<button name="botaoAtualizar" class="btn btn-primary" type="submit">Cadastrar</button>';
-      echo '<hr class="my-4">';
-      echo '</form>';
+      echo    '<h1 style="margin-bottom: 50px; text-align: center">Editar cliente ou fornecedor</h2>';
+      echo    '<div class="mb-3">';
+      echo    '<label for="name">Novo nome</la bel>';
+      echo    '<input name="name" type="text" class="form-control" id="produto" placeholder=" ' . $clifor['name'] . '">';
+      echo  '</div>';
+      echo  '<div class="mb-3">';
+      echo  '<button name="botaoAtualizar" class="btn btn-primary" type="submit">Editar</button>';
+      echo  '</div>';
+      echo  '<hr class="my-4">';
+      echo  '<small class="text-body-secondary">Ao clicar em Editar o seu produto será atualizado</small>';
+      echo  '</form>';
       echo '</div>';
     }
   }
