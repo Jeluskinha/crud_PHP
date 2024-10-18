@@ -141,7 +141,8 @@ include_once("../../venv.php");
 
           $usuario = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-          // encontrando nome do produto
+          //encontrando nome do produto
+
           $sql = "SELECT * FROM tb_products WHERE id = " . $row['id_product'] . " LIMIT 1";
 
           $stmt = $conn->prepare($sql);
