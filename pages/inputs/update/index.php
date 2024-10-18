@@ -78,8 +78,11 @@ include_once("../../../venv.php");
 
     if ($input) {
       echo '<div style="height:80vh; display: flex; flex-direction: row;justify-content: space-evenly;">';
-      echo '<form action="./register/index.php" method="post" style="width: fit-content; display: flex; flex-direction: column;;justify-content: center; gap: 1rem;">';
+      echo '<form action="atualizar.php" method="post" style="width: fit-content; display: flex; flex-direction: column;;justify-content: center; gap: 1rem;">';
       echo '<h1 style="margin-bottom: 50px; text-align: center">Registrar entrada</h1>';
+
+      // estes inputs enviam o id de forma oculta para a página de atualizar
+      echo    '<input type="hidden" name="idInput" value=" ' . $input['id'] . '">';
 
       // --------------------- CLIFOR --------------------------------
       echo '<div style="display: flex;justify-content: start;gap: 1rem;" class="mb-3">';
@@ -148,10 +151,10 @@ include_once("../../../venv.php");
       echo '<label for="quantidade">Quantidade</label>';
 
       // colocando o valor default de AMOUNT usando o placeholder
-      echo '<input name="amount" type="number" class="form-control" id="quantidade" placeholder="' . $input['amount'] . '">';
+      echo '<input name="amount" type="number" class="form-control" id="quantidade"  value="' . intval($input['amount']) . '">';
 
       echo '</div>';
-      echo '<button style="align-self: center;" name="botaoCadastar" class="btn btn-primary" type="submit">Cadastrar</button>';
+      echo '<button style="align-self: center;" name="botaoAtualizar" class="btn btn-primary" type="submit">Editar</button>';
       echo '<hr class="my-4">';
       echo '</form>';
       echo '</div>';

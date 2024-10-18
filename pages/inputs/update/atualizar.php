@@ -7,35 +7,29 @@ include_once("../../../venv.php");
 
 <?php
 
-if (isset($_GET['id'])) {
-  $id = $_GET['id'];
+$idInput = $_POST['idInput'];
+$id_clifor = $_POST['id_clifor'];
+$id_user = $_SESSION['id'];
+$id_product = $_POST['id_product'];
+$amount = $_POST['amount'];
 
-  $sql = "SELECT * FROM tb_products WHERE id = :id";
+if (isset($idInput) and isset($id_clifor) and isset($id_product) and isset($amount)) {
+
+  $sql = "UPDATE tb_input SET id_clifor = :id_clifor, id_user = :id_user, id_product = :id_product, amount = :amount WHERE id = :idInput";
+
   $stmt = $conn->prepare($sql);
-  $stmt->bindParam(':id', $id);
-  $stmt->execute();
-
-  $produto = $stmt->fetch(PDO::FETCH_ASSOC);
-
-  $_SESSION['msg'] = 'Produto atualizado';
-  $botaoAtualizar = htmlspecialchars($_POST['botaoAtualizar'], ENT_QUOTES, 'UTF-8');
-
-  $description = $_POST['description'] ?: $produto['description'];
-  $unit = $_POST['unit'];
-  $status = $produto['status'];
-
-  $sql = "UPDATE tb_products SET description = :description, unit = :unit WHERE id = :id";
-  $stmt = $conn->prepare($sql);
-  $stmt->bindParam(':id', $id);
-  $stmt->bindParam(':description', $description);
-  $stmt->bindParam(':unit', $unit);
+  $stmt->bindParam(':id_clifor', $id_clifor);
+  $stmt->bindParam(':id_user', $id_user);
+  $stmt->bindParam(':id_product', $id_product);
+  $stmt->bindParam(':amount', $amount);
+  $stmt->bindParam(':idInput', $idInput);
 
   if ($stmt->execute()) {
-    $_SESSION['msg'] = 'Produto atualizado';
+    $_SESSION['msg'] = 'Input atualizado';
     header("Location: ../index.php");
     exit;
   } else {
-    $_SESSION['msg'] = 'Erro ao atualizar o produto';
+    $_SESSION['msg'] =  "Erro: " . $e->getMessage();
     header("Location: ../index.php");
     exit;
   }
