@@ -1,5 +1,4 @@
-<!-- AQUI ESTA O COMPONENTE COM O FORMULÁRIO COM OS DADOS PARA ATUALIZAR
-eu não consegui chamar uma função para atualizar sem mudar de página, então criei atualizar.php para interagir com o DB e voltar para a páina de PRODUTOS -->
+<!-- AQUI ESTA O COMPONENTE COM O FORMULÁRIO COM OS DADOS PARA ATUALIZAR, ELA É SEMELHANTE A DE CADASTRO -->
 
 <?php
 session_start();
@@ -92,6 +91,7 @@ include_once("../../../venv.php");
       echo    '<select name="unit" id="unidade">';
       echo      '<option value="UN">Un</option>';
       echo      '<option value="KG">Kg</option>';
+      echo      '<option value="LT">LT</option>';
       echo  '</select>';
       echo  '<button name="botaoAtualizar" class="btn btn-primary" type="submit">Editar</button>';
       echo  '</div>';

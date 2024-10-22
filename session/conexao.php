@@ -21,6 +21,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['botaoLogin'])) {
 
     $result_usuario = $stmt->fetch(PDO::FETCH_ASSOC);
 
+    // SESSION funciona como o localStorage do JS, mas como o PHP é linguagem de server side, fica armazenado na sessão do servidor
+    $_SESSION["idUsuario"] = $result_usuario['id'];
+
     if (isset($result_usuario) and $password == $result_usuario['password']) { //encontrando usuário e autenticando
       echo "autenticado.";
       header("Location: ../pages/_home/index.php");

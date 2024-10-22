@@ -68,6 +68,7 @@ include_once("../../venv.php");
         <select name="unit" id="unidade">
           <option value="UN">Un</option>
           <option value="KG">Kg</option>
+          <option value="LT">LT</option>
         </select>
         <button name="botaoCadastar" class="btn btn-primary" type="submit">Cadastrar</button>
       </div>

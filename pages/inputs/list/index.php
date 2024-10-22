@@ -5,7 +5,7 @@
 session_start();
 include_once("../../../venv.php"); // Variaveis de ambiente e conexão com o db
 
-$sql = "SELECT * FROM tb_products";
+$sql = "SELECT * FROM tb_input";
 $stmt = $conn->prepare($sql);
 $stmt->execute();
 
