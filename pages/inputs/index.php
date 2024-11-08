@@ -114,6 +114,7 @@ include_once("../../venv.php");
 
 
     <div style="align-self: center;">
+
       <?php
       $sql = "SELECT * FROM tb_input";
       $stmt = $conn->prepare($sql);
@@ -176,29 +177,6 @@ include_once("../../venv.php");
     </div>
 
   </div>
-
-  <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light" style="position: absolute;bottom: 0;">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="../products/index.php">Produtos</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
-        aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarText">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="../products/index.php">Cadastrar </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="../_home/index.php">Atualizar </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="../clifor/index.php">Listar</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav> -->
 
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
