@@ -1,11 +1,11 @@
-<!-- EXEMPLO DE SINTAXE PARA LISTAR INPUTSW, O CÓDIGO ATIVO ESTA DENTRO DA products/index.php -->
+<!-- EXEMPLO DE SINTAXE PARA LISTAR OUTPUTS, O CÓDIGO ATIVO ESTA DENTRO DA products/index.php -->
 
 <?php
 
 session_start();
 include_once("../../../venv.php"); // Variaveis de ambiente e conexão com o db
 
-$sql = "SELECT * FROM tb_input";
+$sql = "SELECT * FROM tb_output";
 $stmt = $conn->prepare($sql);
 $stmt->execute();
 
@@ -48,13 +48,13 @@ if ($result) {
     echo  "<td>" . $clienteFornecedor[0]['name'] . "</td>";
     echo  "<td>" . $usuario[0]['user'] . "</td>";
     echo  "<td>" . $produto[0]['description'] . "</td>";
-    echo  "<td style='text-align: center'>" . $row['amount'] . "</td>";
+    echo  "<td style='text-align: center'> -" . $row['amount'] . "</td>";
     // echo  "<td>
     //         <button onClick=\"location.href='update/index.php?id=$idClifor'\" class='btn btn-success'>Editar</button>
     //       </td>";
     echo  '<td>
-            <button onClick="location.href=\'update/index.php?idClifor=' . $idClifor . '&idUser=' . $idUser . '&idProduct=' . $idProduct . '&amount=' . $row['amount'] . ' \'" class=\'btn btn-success\'>Editar</button>
-        </td>';
+                  <button onClick="location.href=\'update/index.php?idClifor=' . $idClifor . '&idUser=' . $idUser . '&idProduct=' . $idProduct . '&amount=' . $row['amount'] . ' \'" class=\'btn btn-success\'>Editar</button>
+              </td>';
     echo "</tr>";
   }
   echo "</table>";
