@@ -44,6 +44,8 @@ include_once("../../venv.php");
           ...
         </span>
       </div>
+      <button style="border: none;  padding:5px; color: white;   background-color: #04AA6D;"
+        onclick="window.location.href='../../index.php'">Deslogar</button>
     </div>
   </nav>
 
