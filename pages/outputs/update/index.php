@@ -66,7 +66,7 @@ include_once("../../../venv.php");
 
     //$sql = "SELECT * FROM tb_input WHERE id_clifor=$idClifor AND id_user=$idUser AND id_product=$idProduct"; 
     //não funciona desse forma ↑ , precisa usar blind bindParam ↓ ↓ exemplo -> :id_product
-    $sql = "SELECT * FROM tb_input WHERE id_clifor = :id_clifor AND id_user = :id_user AND id_product = :id_product";
+    $sql = "SELECT * FROM tb_output WHERE id_clifor = :id_clifor AND id_user = :id_user AND id_product = :id_product";
 
     $stmt = $conn->prepare($sql);
     $stmt->bindParam(':id_clifor', $idClifor);
@@ -79,7 +79,7 @@ include_once("../../../venv.php");
     if ($input) {
       echo '<div style="height:80vh; display: flex; flex-direction: row;justify-content: space-evenly;">';
       echo '<form action="atualizar.php" method="post" style="width: fit-content; display: flex; flex-direction: column;;justify-content: center; gap: 1rem;">';
-      echo '<h1 style="margin-bottom: 50px; text-align: center">Editar entrada</h1>';
+      echo '<h1 style="margin-bottom: 50px; text-align: center">Editar saída</h1>';
 
       // estes inputs enviam o id de forma oculta para a página de atualizar
       echo    '<input type="hidden" name="idInput" value=" ' . $input['id'] . '">';
@@ -104,6 +104,14 @@ include_once("../../../venv.php");
       $stmt->execute();
 
       $clifor = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+      // REMOVENDO A CHAVE DEFAULT IGUAL AO DO ARRAY PARA NÃO FICAR REPETIDO NO SELECT DE CLIENTE/FORNECEDOR
+      foreach ($clifor as $key => $item) {
+        if ($item["name"] == $cliforForEdit[0]['name']) {
+          unset($clifor[$key]);
+        }
+      }
+
 
       if ($clifor) {
         foreach ($clifor as $row) {
@@ -135,6 +143,14 @@ include_once("../../../venv.php");
       $stmt = $conn->prepare($sql);
       $stmt->execute();
       $product = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+
+      // REMOVENDO A CHAVE DEFAULT IGUAL AO DO ARRAY PARA NÃO FICAR REPETIDO NO SELECT DE PRODUTO
+      foreach ($product as $key => $item) {
+        if ($item["description"] == $productForEdit[0]['description']) {
+          unset($product[$key]);
+        }
+      }
 
       if ($product) {
         foreach ($product as $row) {

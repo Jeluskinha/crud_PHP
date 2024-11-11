@@ -85,7 +85,7 @@ include_once("../../../venv.php");
       // echo    '<input type="hidden" name="id" value=" ' . $produto['id'] . '"';
 
 
-      echo '<h1 style="margin-bottom: 50px">Cadastro de usuário</h1>';
+      echo '<h1 style="margin-bottom: 50px">Editar usuário</h1>';
       echo '<div class="mb-3">';
       echo '<label for="nome">Nome</label>';
       echo '<input name="name" type="text" class="form-control" id="nome" placeholder=" ' . $usuario['name'] . '">';
