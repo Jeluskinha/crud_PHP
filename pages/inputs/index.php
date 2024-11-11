@@ -164,7 +164,7 @@ include_once("../../venv.php");
           //         <button onClick=\"location.href='update/index.php?id=$idClifor'\" class='btn btn-success'>Editar</button>
           //       </td>";
           echo  '<td>
-                  <button onClick="location.href=\'update/index.php?idClifor=' . $idClifor . '&idUser=' . $idUser . '&idProduct=' . $idProduct . ' \'" class=\'btn btn-success\'>Editar</button>
+                  <button onClick="location.href=\'update/index.php?idClifor=' . $idClifor . '&idUser=' . $idUser . '&idProduct=' . $idProduct . '&amount=' . $row['amount'] . ' \'" class=\'btn btn-success\'>Editar</button>
               </td>';
           echo "</tr>";
         }

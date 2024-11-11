@@ -60,18 +60,20 @@ include_once("../../../venv.php");
   $idClifor = $_GET['idClifor'];
   $idUser = $_GET['idUser'];
   $idProduct = $_GET['idProduct'];
+  $amount = $_GET['amount'];
 
 
   if (isset($idClifor) and isset($idUser) and isset($idProduct)) {
 
     //$sql = "SELECT * FROM tb_input WHERE id_clifor=$idClifor AND id_user=$idUser AND id_product=$idProduct"; 
     //não funciona desse forma ↑ , precisa usar blind bindParam ↓ ↓ exemplo -> :id_product
-    $sql = "SELECT * FROM tb_input WHERE id_clifor = :id_clifor AND id_user = :id_user AND id_product = :id_product";
+    $sql = "SELECT * FROM tb_input WHERE id_clifor = :id_clifor AND id_user = :id_user AND id_product = :id_product AND amount = :amount";
 
     $stmt = $conn->prepare($sql);
     $stmt->bindParam(':id_clifor', $idClifor);
     $stmt->bindParam(':id_user', $idUser);
     $stmt->bindParam(':id_product', $idProduct);
+    $stmt->bindParam(':amount', $amount);
     $stmt->execute();
 
     $input = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -105,6 +107,13 @@ include_once("../../../venv.php");
 
       $clifor = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
+      // REMOVENDO A CHAVE DEFAULT IGUAL AO DO ARRAY PARA NÃO FICAR REPETIDO NO SELECT DE CLIENTE/FORNECEDOR
+      foreach ($clifor as $key => $item) {
+        if ($item["name"] == $cliforForEdit[0]['name']) {
+          unset($clifor[$key]);
+        }
+      }
+
       if ($clifor) {
         foreach ($clifor as $row) {
           echo '<option value="' . $row['id'] . '" >' . $row['name'] . '</option>';
@@ -135,6 +144,14 @@ include_once("../../../venv.php");
       $stmt = $conn->prepare($sql);
       $stmt->execute();
       $product = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+      // REMOVENDO A CHAVE DEFAULT IGUAL AO DO ARRAY PARA NÃO FICAR REPETIDO NO SELECT DE PRODUTO
+      foreach ($product as $key => $item) {
+        if ($item["description"] == $productForEdit[0]['description']) {
+          unset($product[$key]);
+        }
+      }
+
 
       if ($product) {
         foreach ($product as $row) {

@@ -15,7 +15,7 @@ $amount = $_POST['amount'];
 
 if (isset($idInput) and isset($id_clifor) and isset($id_product) and isset($amount)) {
 
-  $sql = "UPDATE tb_input SET id_clifor = :id_clifor, id_user = :id_user, id_product = :id_product, amount = :amount WHERE id = :idInput";
+  $sql = "UPDATE tb_output SET id_clifor = :id_clifor, id_user = :id_user, id_product = :id_product, amount = :amount WHERE id = :idInput";
 
   $stmt = $conn->prepare($sql);
   $stmt->bindParam(':id_clifor', $id_clifor);

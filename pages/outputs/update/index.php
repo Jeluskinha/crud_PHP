@@ -60,21 +60,24 @@ include_once("../../../venv.php");
   $idClifor = $_GET['idClifor'];
   $idUser = $_GET['idUser'];
   $idProduct = $_GET['idProduct'];
+  $amount = $_GET['amount'];
 
 
   if (isset($idClifor) and isset($idUser) and isset($idProduct)) {
 
     //$sql = "SELECT * FROM tb_input WHERE id_clifor=$idClifor AND id_user=$idUser AND id_product=$idProduct"; 
     //não funciona desse forma ↑ , precisa usar blind bindParam ↓ ↓ exemplo -> :id_product
-    $sql = "SELECT * FROM tb_output WHERE id_clifor = :id_clifor AND id_user = :id_user AND id_product = :id_product";
+    $sql = "SELECT * FROM tb_output WHERE id_clifor = :id_clifor AND id_user = :id_user AND id_product = :id_product AND amount = :amount";
 
     $stmt = $conn->prepare($sql);
     $stmt->bindParam(':id_clifor', $idClifor);
     $stmt->bindParam(':id_user', $idUser);
     $stmt->bindParam(':id_product', $idProduct);
+    $stmt->bindParam(':amount', $amount);
     $stmt->execute();
 
     $input = $stmt->fetch(PDO::FETCH_ASSOC);
+
 
     if ($input) {
       echo '<div style="height:80vh; display: flex; flex-direction: row;justify-content: space-evenly;">';
@@ -167,7 +170,7 @@ include_once("../../../venv.php");
       echo '<label for="quantidade">Quantidade</label>';
 
       // colocando o valor default de AMOUNT usando o placeholder
-      echo '<input name="amount" type="number" class="form-control" id="quantidade"  value="' . intval($input['amount']) . '">';
+      echo '<input name="amount" type="number" class="form-control" id="quantidade"  value="' . $amount . '">';
 
       echo '</div>';
       echo '<button style="align-self: center;" name="botaoAtualizar" class="btn btn-primary" type="submit">Editar</button>';
