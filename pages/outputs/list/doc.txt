@@ -1,0 +1,1 @@
+este index é apenas uma cópia de referencia, o código ativo está em ../index.php no segundo componente

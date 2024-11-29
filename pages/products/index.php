@@ -44,6 +44,8 @@ include_once("../../venv.php");
           ...
         </span>
       </div>
+      <button style="border: none;  padding:5px; color: white;   background-color: #04AA6D;"
+        onclick="window.location.href='../../index.php'">Deslogar</button>
     </div>
   </nav>
 
@@ -68,6 +70,7 @@ include_once("../../venv.php");
         <select name="unit" id="unidade">
           <option value="UN">Un</option>
           <option value="KG">Kg</option>
+          <option value="LT">LT</option>
         </select>
         <button name="botaoCadastar" class="btn btn-primary" type="submit">Cadastrar</button>
       </div>

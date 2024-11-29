@@ -39,11 +39,15 @@ include_once("../../venv.php");
           <li class="nav-item">
             <a class="nav-link" href="../outputs/index.php">Saidas</a>
           </li>
+
+
         </ul>
-        <span class="navbar-text">
+        <span class=" navbar-text">
           ...
         </span>
       </div>
+      <button style="border: none;  padding:5px; color: white;   background-color: #04AA6D;"
+        onclick="window.location.href='../../index.php'">Deslogar</button>
     </div>
   </nav>
 
